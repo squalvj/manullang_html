@@ -1,0 +1,225 @@
+// vars---
+$gutter = 30
+$column = 84
+// ---vars
+
+@font-face
+	font-family folioL
+	src url(../font/Folio-Lig.otf)
+	font-style normal
+	font-weight 400
+@font-face
+	font-family garamondI
+	src url(../font/GaramondPremrPro-ItCapt.otf)
+	font-style normal
+	font-weight 400
+@font-face
+	font-family garamondR
+	src url(../font/GaramondPremrPro-Capt.otf)
+	font-style normal
+	font-weight 400
+	
+
+
+// utility---
+p
+	margin 0
+ul
+	margin 0
+	padding 0
+h2,h1,h3,h4
+	margin 0
+figure
+	margin 0
+a
+	text-decoration none
+body
+	font-size 14px
+
+*, *:before, *:after
+	box-sizing border-box
+
+.container
+	margin-left auto
+	margin-right auto
+	padding 0 15px
+.garamond-i
+	font-family garamondI
+	
+::-webkit-scrollbar
+	display none
+// ---utility
+
+
+
+// modifier---
+._flex
+	display flex
+	> *
+		flex 1 1 auto
+
+._flex-col
+	display flex
+	flex-direction column
+	> *
+		flex 1 1 auto
+._list-none
+	list-style-type none
+// ---modifier
+
+// main---
+.main
+	background white
+// ---main
+
+
+
+// header---
+#header
+	width 100%
+	position fixed
+	top 0
+	left 0
+	z-index 10
+	nav
+		height 141px
+		ul
+			width 70%
+			padding 0
+			margin 0
+			list-style-type none
+			align-items flex-end
+			padding-left $gutter + $column px
+			li
+				position relative
+					
+.header-link
+	width 100%
+	font-family folioL
+	position relative
+	font-size : 12px;
+	letter-spacing : 1.2px;
+	text-transform : uppercase;
+	color : #828279;
+	color : rgb(130, 130, 121);
+	display inline-block
+	height 30px
+	//padding 0 10px
+	span
+		transition all .50s ease
+		display inline-block
+	&.active,&:hover
+		span
+			color black
+			transform translateY(30px)
+.logo
+	display block
+	width 32.6%
+	display flex
+	justify-content flex-end
+	a
+		display inline-block
+		width auto
+		height 91px
+		position relative
+		img
+			width auto
+			height 100%
+			position absolute
+			right 0
+			bottom -56px
+
+#marker
+	position fixed
+	background black
+	height 1px
+// ---header
+	
+
+// content two---
+.transformer
+	font-family : folioL;
+	font-size : 14px;
+	line-height : 22px;
+	letter-spacing : 1.4px;
+	text-transform : uppercase;
+	color : #828279;
+	color : rgb(130, 130, 121);
+	&.active
+		color black
+		
+// ---content two
+
+
+
+// content home---
+.content-home
+	justify-content flex-end
+.home-text
+	padding-top 150px
+	padding-left 80px
+	font-size : 60px;
+	line-height : 59.6px;
+	letter-spacing : -0.6px;
+	color : #878774;
+	font-weight normal
+	display flex
+	text-align center
+// ---home
+
+
+
+// content---
+.content
+	padding-top 260px
+	height 100vh
+	width 100%
+// ---content
+
+
+// content side nav---
+.content-side-nav
+	width 25.5%
+// ---content side nav
+
+
+// the content---
+.content-the-content
+	width 74.5%
+.content-overflow-inside
+	margin-left 198px
+	max-height 438px
+	overflow auto
+	p
+		font-family garamondR
+		font-size : 20px;
+		line-height : 25px;
+		letter-spacing : 0.5px;
+		color : #000000;
+.content-overflow-process
+	width calc(100% - 198px)
+	height 1px
+	margin-left 198px
+	margin-top 30px
+	position relative
+	background white
+	span
+		position absolute
+		left 0
+		height 100%
+		top 0
+		background black
+		display block
+// ---the content
+@media (min-width: 1437px)
+	// utility---
+	.container
+		width 1437px
+		padding 0 50px
+	// ---utility
+	
+
+// mozilla---
+	.fullpage-overflow
+		overflow: -moz-scrollbars-none;
+// ---mozilla
