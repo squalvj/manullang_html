@@ -33,6 +33,9 @@ figure
 	margin 0
 a
 	text-decoration none
+	color #D1D3D4
+	&.active
+		color black
 body
 	font-size 14px
 
@@ -136,22 +139,6 @@ body
 // ---header
 	
 
-// content two---
-.transformer
-	font-family : folioL;
-	font-size : 14px;
-	line-height : 22px;
-	letter-spacing : 1.4px;
-	text-transform : uppercase;
-	color : #828279;
-	color : rgb(130, 130, 121);
-	&.active
-		color black
-		
-// ---content two
-
-
-
 // content home---
 .content-home
 	justify-content flex-end
@@ -168,26 +155,58 @@ body
 // ---home
 
 
-
-// content---
-.content
-	padding-top 260px
-	height 100vh
-	width 100%
-// ---content
-
-
 // content side nav---
 .content-side-nav
 	width 25.5%
+	li
+		&.indent
+			text-align center
+.content-side-nav-group
+	text-transform uppercase
+	font-family : Folio;
+	font-size : 14px;
+	line-height : 22px;
+	letter-spacing : 1.4px;
+	color : #828279;
+	margin-bottom 25px
+	&:last-child
+		margin-bottom 0
+	li
+		&:first-child
+			padding-left 25px
+	a:hover
+		color black
+			
+.transformer
+	font-family : folioL;
+	font-size : 14px;
+	line-height : 22px;
+	letter-spacing : 1.4px;
+	text-transform : uppercase;
+	color : #828279;
+	color : rgb(130, 130, 121);
+	&.active
+		color black
+.side-nav-pagination
+	a
+		display inline-block
+		margin-right 10px
+		margin-bottom 10px
 // ---content side nav
 
 
 // the content---
+.content
+	padding-top 260px
+	height 100vh
+	width 100%
+	padding-bottom 50px
 .content-the-content
 	width 74.5%
+	padding-left 198px
+	padding-right 198px
 .content-overflow-inside
-	margin-left 198px
+	//margin-left 198px
 	max-height 438px
 	overflow auto
 	p
@@ -197,9 +216,8 @@ body
 		letter-spacing : 0.5px;
 		color : #000000;
 .content-overflow-process
-	width calc(100% - 198px)
+	width 100%
 	height 1px
-	margin-left 198px
 	margin-top 30px
 	position relative
 	background white
@@ -210,13 +228,128 @@ body
 		top 0
 		background black
 		display block
+.content-download-link
+	margin-top 50px
+	a
+		font-family : folioL;
+		font-size : 12px;
+		line-height : 22px;
+		letter-spacing : 1.2px;
+		text-transform : uppercase;
+		color : #828279;
+.content-footer
+	justify-content space-between
+	a
+		font-family : folioL;
+		font-size : 11px;
+		letter-spacing : 1.1px;
+		text-transform : uppercase;
+		color : #828279;
 // ---the content
+
+// article---
+
+.article-group
+	li
+		margin-bottom 20px
+.article-side-nav
+	width 14.8%
+.article-content
+	width 85.2%
+	padding-left 144px
+	padding-right 114px
+.article-content-wrapper
+	max-height unset
+	overflow hidden
+	p
+		font-family : garamondR;
+		font-style : italic;
+		font-size : 42px;
+		line-height : 51.6px;
+		color : #000000;
+		text-align center
+.article-more
+	font-family folioL
+	font-size : 12px;
+	line-height : 22px;
+	letter-spacing : 1.2px;
+	text-transform : uppercase;
+	color : #929390;
+	font-style normal
+	display inline-block
+	margin-left 10px
+// ---article
+
+// partner---
+.content-partners-article
+	max-height 200px
+.partners-img
+	width 117px
+	position relative
+	overflow hidden
+	margin-bottom 15px
+	> div
+		position absolute
+		left 0
+		right 0
+		top 0
+		bottom 0
+		img
+			width 100%
+			height auto
+	&:after
+		content ''
+		display block
+		padding-top 120%
+.content-partners
+	margin-bottom $gutter px
+.partners-name
+	font-family garamondI
+	font-size : 32px;
+	line-height : 32px;
+	letter-spacing : 1.4px;
+	font-weight normal
+	margin-bottom 5px
+.partners-desc
+	font-family folioL
+	font-size : 14px;
+	line-height : 20px;
+	letter-spacing : 1.4px;
+	font-weight normal
+	color #828279
+// ---partner
+
+// contact & career---
+.contact-content
+	max-height unset
+	overflow hidden
+	flex-grow 10
+	p
+		font-family : garamondR
+		font-style : italic;
+		font-size : 36px;
+		line-height : 40px;
+		color : #000000;
+		a
+			color black
+// ---contact & career
 @media (min-width: 1437px)
 	// utility---
 	.container
 		width 1437px
 		padding 0 50px
 	// ---utility
+@media (min-width: 1280px)
+	.container
+		padding-left 50px
+		padding-right 50px
+@media (min-width: 1080px)
+	.logo
+		width 20%
+	#header
+		nav
+			ul
+				width 80%
 	
 
 // mozilla---
