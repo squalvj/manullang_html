@@ -54,7 +54,7 @@ home = () => {
 				css3: true,
 				scrollOverflow: true,
 				anchors: anchor,
-				normalScrollElements:'.fullpage-overflow',
+				normalScrollElements:'.fullpage-overflow, .content-side-nav',
 				verticalCentered:false,
 				controlArrows: false,
 				onLeave: function(index, nextIndex, direction) {
