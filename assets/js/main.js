@@ -25,8 +25,36 @@ click = () => {
 				}
 			});
 		},
+		hamburgerClick: function(){
+			var openNav = function(){
+				$(".main").css({
+					'transform': 'translateX(-300px)',
+					'filter': 'blur(2px)'
+				});
+				$("#header").css('transform', 'translateX(-300px)');
+				$(".header-ul").css('transform', 'translateX(-100px)');
+				console.log("OPEN")
+			}
+			var closeNav = function(){
+				$(".main").css({
+					'transform': 'translateX(0)',
+					'filter': 'blur(0px)'
+				});
+				$("#header").css('transform', 'translateX(0)');
+				$(".header-ul").css('transform', 'translateX(-100px)');
+			}
+			$(".hamburger").click(function(event) {
+				$(this).toggleClass('active');
+				if ($(this).hasClass('active'))
+					openNav();
+				else
+					closeNav();
+				
+			});
+		},
 		init: function(){
 			this.headerLink();
+			this.hamburgerClick();
 		}
 	}
 
@@ -65,6 +93,7 @@ home = () => {
 				    _this.activeNav(nextIndex);
 				    _this.moveMarker();
 				    _this.hoverNav();
+				    _this.markerBottom(nextIndex);
 			  	},
 			  	afterLoad: function(anchorLink, index) {
 			  		
@@ -73,6 +102,15 @@ home = () => {
 		  	 		//showHideLoading();
 				}
 			});
+		},
+		markerBottom: function(currentIndex){
+			var marker = $(".marker-bottom").find('span')
+			var total = $(".section").length;
+			var update = function(num1, num2){
+			  var percent = Math.ceil( num1 / num2 * 100 ) + '%';
+			  $(".marker-bottom").find('span').css('width', percent);
+			}
+			update(currentIndex, total);
 		},
 		activeNav: function(i){
 			$(".header-link").removeClass('active')
@@ -136,7 +174,7 @@ home = () => {
 		},
 		mouseWheel: function(){
 			if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1){
-				$(".fullpage-overflow").bind('mousewheel', function(event) {
+				$(".fullpage-overflow, .content-side-nav").bind('mousewheel', function(event) {
 				    event.preventDefault();
 				    var scrollTop = this.scrollTop;
 				    this.scrollTop = (scrollTop + ((event.deltaY * event.deltaFactor) * -1));
@@ -150,6 +188,7 @@ home = () => {
 			this.hoverNav();
 			this.mouseWheel();
 			this.processScroll();
+			this.markerBottom();
 		},
 		
 	}
