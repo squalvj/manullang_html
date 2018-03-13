@@ -28,10 +28,10 @@ click = () => {
 		hamburgerClick: function(){
 			var openNav = function(){
 				$(".main").css({
-					'transform': 'translateX(-300px)',
+					'transform': 'translateX(-285px)',
 					'filter': 'blur(2px)'
 				});
-				$("#header").css('transform', 'translateX(-300px)');
+				$("#header").css('transform', 'translateX(-285px)');
 				$(".header-ul").css('transform', 'translateX(-100px)');
 				console.log("OPEN")
 			}
@@ -80,10 +80,10 @@ home = () => {
 			fullpageElement.fullpage({
 				scrollingSpeed: 1000,
 				css3: true,
-				scrollOverflow: true,
+				scrollOverflow: false,
 				anchors: anchor,
 				normalScrollElements:'.fullpage-overflow, .content-side-nav',
-				verticalCentered:false,
+				verticalCentered: (util.checkMobile()) ? true : false,
 				controlArrows: false,
 				onLeave: function(index, nextIndex, direction) {
 					var el,nextEl;
@@ -127,15 +127,16 @@ home = () => {
 		    }
 		},
 		processScroll: function(){
-			var update = function(num1, num2){
+			var update = function(num1, num2, el){
 			  var percent = Math.ceil( num1 / num2 * 100 ) + '%';
-			  $(".content-overflow-process").find('span').css('width', percent);
+			  el.css('width', percent);
 			}
 
 			$(".fullpage-overflow").bind('scroll', function(){
 			  var top = $(this).scrollTop();
+			  var el = $(this).closest('.content-the-content').find('.content-overflow-process').find('span')
 			  var height = $(this).find("p").prop("scrollHeight") - $(this).innerHeight();
-			  update(top, height);
+			  update(top, height, el);
 			});
 		},
 		moveMarker: function(){
