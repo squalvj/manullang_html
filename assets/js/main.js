@@ -110,7 +110,7 @@ home = () => {
 				css3: true,
 				scrollOverflow: false,
 				anchors: anchor,
-				normalScrollElements:'.fullpage-overflow, .content-side-nav, .content-side-nav>ul',
+				normalScrollElements:'.fullpage-overflow, .side-nav-overflow',
 				verticalCentered: (util.checkMobile()) ? true : false,
 				controlArrows: false,
 				onLeave: function(index, nextIndex, direction) {
