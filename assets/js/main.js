@@ -27,32 +27,60 @@ click = () => {
 		},
 		hamburgerClick: function(){
 			var openNav = function(){
-				$(".main").css({
-					'transform': 'translateX(-285px)',
-					'filter': 'blur(2px)'
-				});
-				$("#header").css('transform', 'translateX(-285px)');
-				$(".header-ul").css('transform', 'translateX(-100px)');
-				console.log("OPEN")
+				// $(".main").css({
+				// 	'transform': 'translateX(-285px)',
+				// 	'filter': 'blur(2px)'
+				// });
+				// $("#header").css('transform', 'translateX(-285px)');
+				// $(".header-ul").css('transform', 'translateX(-100px)');
+				$(".main, #header, .header-ul").addClass('open-navbar')
 			}
 			var closeNav = function(){
-				$(".main").css({
-					'transform': 'translateX(0)',
-					'filter': 'blur(0px)'
-				});
-				$("#header").css('transform', 'translateX(0)');
-				$(".header-ul").css('transform', 'translateX(-100px)');
+				// $(".main").css({
+				// 	'transform': 'translateX(0)',
+				// 	'filter': 'blur(0px)'
+				// });
+				// $("#header").css('transform', 'translateX(0)');
+				// $(".header-ul").css('transform', 'translateX(-100px)');
+
+				$(".main, #header, .header-ul").removeClass('open-navbar')
 			}
 			$(".hamburger").click(function(event) {
 				$(this).toggleClass('active');
-				if ($(this).hasClass('active'))
+				if ($(this).hasClass('active')){
+					if ($(".main").hasClass('open-side-nav'))
+						$(".main").removeClass('open-side-nav')
 					openNav();
-				else
+				}
+				else{
 					closeNav();
-				
+				}
+			});
+
+			$(".section").click(function(event) {
+				if ($(".hamburger").hasClass('active')){
+					$(".hamburger").removeClass('active')
+					closeNav();
+				}
+			});
+		},
+		openSideNavMobile: function(){
+			$(".title-content").click(function(event) {
+				$(".main").addClass('open-side-nav')
+			});
+
+			$(".partners-name").click(function(event) {
+				$(".main").addClass('open-side-nav')
+			});
+		},
+		closeSideNavMobile: function(){
+			$(".close-side-nav-mobile").click(function(event) {
+				$(".main").removeClass('open-side-nav')
 			});
 		},
 		init: function(){
+			this.openSideNavMobile();
+			this.closeSideNavMobile();
 			this.headerLink();
 			this.hamburgerClick();
 		}
@@ -82,7 +110,7 @@ home = () => {
 				css3: true,
 				scrollOverflow: false,
 				anchors: anchor,
-				normalScrollElements:'.fullpage-overflow, .content-side-nav',
+				normalScrollElements:'.fullpage-overflow, .content-side-nav, .content-side-nav>ul',
 				verticalCentered: (util.checkMobile()) ? true : false,
 				controlArrows: false,
 				onLeave: function(index, nextIndex, direction) {

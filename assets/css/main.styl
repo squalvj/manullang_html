@@ -38,6 +38,13 @@ a
 		color black
 body
 	font-size 14px
+button
+	margin 0
+	padding 0
+	border none
+	background none
+	&:focus
+		outline none
 
 *, *:before, *:after
 	box-sizing border-box
@@ -164,6 +171,8 @@ body
 
 
 // content side nav---
+.close-side-nav-mobile
+	display none
 .content-side-nav
 	width 25.5%
 	max-height 100%
@@ -255,6 +264,8 @@ body
 		letter-spacing : 1.1px;
 		text-transform : uppercase;
 		color : #828279;
+.title-content
+	display none
 // ---the content
 
 // article---
@@ -469,8 +480,60 @@ body
 			height 100%
 			transition width .25s ease
 @media (max-width: 756px)
+	.close-side-nav-mobile
+		display block
+		position absolute
+		top 110px
+		right 25px
+		width 30px
+		height 25px
+		background url('../img/arrow-2.svg') no-repeat center
+		background-size contain
+			
+	.title-content
+		font-family: folioL;
+		font-size: 14px;
+		line-height: 22px;
+		letter-spacing: 1.4px;
+		text-transform: uppercase;
+		color black
+		display block
+		font-weight bold
+		margin-bottom 20px
+		position relative
+		&:after
+			content ''
+			position absolute
+			left -35px
+			top -3px
+			width: 25px
+			height: 110%
+			background: url(../img/arrow.svg) no-repeat;
+			background-size: contain
+			background-position: center
 	.content-side-nav
-		display none
+		display flex
+		flex-wrap wrap
+		position absolute
+		background white
+		width calc(100% + 50px)
+		top 0
+		left calc(-100% - 75px)
+		min-height 100vh
+		padding 150px 25px 25px
+		z-index 2
+		> ul
+			width 100%
+			display block
+			overflow auto
+			max-height 100%
+			li
+				text-align right
+	.side-nav-pagination
+		width 100%
+			
+	.section
+		position relative
 	.container
 		padding 0 25px
 	.logo 
@@ -479,8 +542,13 @@ body
 			img
 				bottom -30px
 	#header
+		&.open-navbar
+			transform translateX(-285px)
 		nav
 			height 100px
+	.header-ul
+		&.open-navbar
+			transform translateX(-100px)
 	.home-text
 		font-size 30px
 		line-height unset
@@ -517,9 +585,18 @@ body
 		flex-direction column
 	#marker
 		display none
+	.main
+		transform translateX(0)
+		&.open-navbar
+			transform translateX(-285px)
+		&.open-side-nav
+			transform translateX(100vw)
 @media (max-width: 575px)
+	.side-nav-pagination
+		text-align right
 	.main
 		filter none !important
+		
 	.content-overflow-inside
 		max-height 300px
 	.content-partners-article
@@ -535,9 +612,18 @@ body
 		width 100%
 	.content-home
 		padding-top 0
+		display table
 	.content-footer
 		margin-top 50px
-
+	.content-overflow-process
+		margin-top 15px
+@media (max-width: 340px)
+	.main,#header
+		&.open-navbar
+			transform translateX(-260px)
+	.header-ul
+		&.open-navbar
+			transform translateX(-100px)
 @media (max-width: 576px) and (max-height: 520px)
 	.content-overflow-inside
 		max-height 250px
