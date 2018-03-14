@@ -402,13 +402,20 @@ button
 		vertical-align middle
 		padding 0
 @media (max-width: 1024px)
+	.main
+		&.open-navbar
+			filter blur(2px)
+			transform translateX(-285px)
 	#header
+		&.open-navbar
+			transform translateX(-285px)
 		nav
 			ul.header-ul
 				padding 50px
 				display block	
 				position: fixed;
-				right: -400px
+				//right: -400px
+				right -300px
 				width 300px
 				flex-direction: column;
 				align-items: left;
@@ -479,11 +486,13 @@ button
 			width 0%
 			height 100%
 			transition width .25s ease
+	#marker
+		display none
 @media (max-width: 756px)
 	.close-side-nav-mobile
 		display block
 		position absolute
-		top 110px
+		top 90px
 		right 25px
 		width 30px
 		height 25px
@@ -521,7 +530,7 @@ button
 		top 0
 		left calc(-100% - 75px)
 		min-height 100vh
-		padding 150px 25px 25px
+		padding 130px 25px 25px
 		z-index 2
 		> ul
 			width 100%
@@ -584,12 +593,12 @@ button
 			line-height 30px
 	.content-footer
 		flex-direction column
-	#marker
-		display none
+	#header
+		nav
+			ul.header-ul
+				right -400px
 	.main
 		transform translateX(0)
-		&.open-navbar
-			transform translateX(-285px)
 		&.open-side-nav
 			transform translateX(100vw)
 @media (max-width: 575px)

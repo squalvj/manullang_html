@@ -65,13 +65,14 @@ click = () => {
 			});
 		},
 		openSideNavMobile: function(){
-			$(".title-content").click(function(event) {
-				$(".main").addClass('open-side-nav')
-			});
-
-			$(".partners-name").click(function(event) {
-				$(".main").addClass('open-side-nav')
-			});
+			if (util.checkMobile()){
+				$(".title-content").click(function(event) {
+					$(".main").addClass('open-side-nav')
+				});
+				$(".partners-name").click(function(event) {
+					$(".main").addClass('open-side-nav')
+				});
+			}
 		},
 		closeSideNavMobile: function(){
 			$(".close-side-nav-mobile").click(function(event) {
@@ -212,9 +213,11 @@ home = () => {
 			}
 		},
 		init: function(){
+			if (!util.checkMobile()){
+				this.hoverNav();
+			}
 			this.initMarker();
 			this.fullpage();
-			this.hoverNav();
 			this.mouseWheel();
 			this.processScroll();
 			this.markerBottom();
