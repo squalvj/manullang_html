@@ -78,6 +78,14 @@ button
 		flex 1 1 auto
 ._list-none
 	list-style-type none
+._unhoverable
+	color #828279
+	cursor default
+	&:hover
+		color #828279 !important
+._flex-unset-child
+	>*
+		flex unset
 // ---modifier
 
 // main---
@@ -206,6 +214,8 @@ button
 	color : rgb(130, 130, 121);
 	&.active
 		color black
+	&:hover
+		color black
 .side-nav-pagination
 	a
 		display inline-block
@@ -248,7 +258,7 @@ button
 		background black
 		display block
 .content-download-link
-	margin-top 50px
+	margin-top 30px
 	a
 		font-family : folioL;
 		font-size : 12px;
@@ -350,6 +360,30 @@ button
 		color : #000000;
 		a
 			color black
+			text-decoration underline
+.contact-job-vacancies
+	display none
+	flex-grow 10
+	padding-left 7px
+	h2
+		font-family : garamondI;
+		font-size : 42px;
+		line-height : 46px;
+		color : #000000;
+		font-weight normal
+		margin-top: 25px;
+		margin-bottom: 5px;
+		&:first-child
+			margin-top 0
+	p
+		font-family : garamondR
+		font-size : 20px;
+		line-height : 29px;
+		letter-spacing : 0.5px;
+		color : #000000;
+		font-weight normal
+		&:last-child
+			margin-bottom 20px
 // ---contact & career
 
 // marker-bottom----
@@ -601,6 +635,9 @@ button
 		transform translateX(0)
 		&.open-side-nav
 			transform translateX(100vw)
+	.contact-job-vacancies
+		h2
+			font-size 26px
 @media (max-width: 575px)
 	.side-nav-pagination
 		text-align right

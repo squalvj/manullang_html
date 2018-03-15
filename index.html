@@ -136,9 +136,9 @@
 
 									<ul class="content-side-nav-group _list-none">
 										<li>associates</li>
-										<li><a class="transformer" href="#">Edwina janu anjayani</a></li>
-										<li><a class="transformer" href="#">fredy n. montoalu, s.h.</a></li>
-										<li><a class="transformer" href="#">hadimba r.h. sibarani</a></li>
+										<li><a class="_unhoverable" href="#">Edwina janu anjayani</a></li>
+										<li><a class="_unhoverable" href="#">fredy n. montoalu, s.h.</a></li>
+										<li><a class="_unhoverable" href="#">hadimba r.h. sibarani</a></li>
 									</ul>
 								</ul>
 							</div>
@@ -217,9 +217,14 @@
 					<div data-anchor-name="anchor7" class="section">
 						<div class="content content-two _flex">
 							<div class="content-side-nav">
-								
+								<button class="close-side-nav-mobile"></button>
+								<ul class="_flex-col _list-none side-nav-overflow">
+									<li><a class="transformer active contact-trigger" href="#">contact →</a></li>
+									<li><a class="transformer job-trigger" href="#">career →</a></li>
+								</ul>
 							</div>
-							<div class="content-the-content _flex-col">
+							<div class="content-the-content _flex-col _flex-unset-child">
+								<h2 class="title-content">Contact</h2>
 								<article class="content-overflow-inside contact-content">
 									<p>EightyEight@Kasablanka Office <br>
 									Tower A, 7th Floor <br>
@@ -229,11 +234,26 @@
 									m@manullang.co<br>
 									www.manullang.co<br><br>
 
-									<a href="#">Job Vacancies</a></p>
+									<!-- <a class="job" href="#">Job Vacancies</a> --></p>
 								</article>
-								<!-- <div class="content-overflow-process"><span></span></div> -->
+
+								<article class="fullpage-overflow content-overflow-inside contact-job-vacancies">
+									<h2>Jr. Legal Officer</h2>
+									<p>Vivamus vulputate ornare neque sit amet viverra. Ut eros leo, congue et facilisis in, tincidunt viverra dui. Quisque accumsan ante sed sem aliquam, ut convallis nibh semper.</p>
+									<h2>HR Manager</h2>
+									<p>Phasellus lobortis velit eu lacus suscipit sagittis. Praesent sed pulvinar lectus, et dapibus lectus.</p>
+									<h2>Operations Supervisor</h2>
+									<p>Fusce commodo consequat iaculis. Morbi maximus pharetra lacinia nunc orci pharetra neque, vel sollicitudin ex.</p>
+									<h2>Jr. Legal Officer</h2>
+									<p>Vivamus vulputate ornare neque sit amet viverra. Ut eros leo, congue et facilisis in, tincidunt viverra dui. Quisque accumsan ante sed sem aliquam, ut convallis nibh semper.</p>
+									<h2>HR Manager</h2>
+									<p>Phasellus lobortis velit eu lacus suscipit sagittis. Praesent sed pulvinar lectus, et dapibus lectus.</p>
+									<h2>Operations Supervisor</h2>
+									<p>Fusce commodo consequat iaculis. Morbi maximus pharetra lacinia nunc orci pharetra neque, vel sollicitudin ex.</p>
+								</article>
+								<div class="content-overflow-process"><span></span></div>
 								<div class="content-footer _flex">
-									<span><a href="#">disclaimer</a></span>
+									<span><a href="http://facebook.com">disclaimer</a></span>
 									<span><a href="#">privacy policy</a></span>
 									<span><a href="#">copyright@2018</a></span>
 								</div>
@@ -248,7 +268,19 @@
 		<div class="marker-bottom">
 			<span></span>
 		</div>
-		<!-- <script type="text/javascript" src="assets/js/scrollmagic.js"></script> -->
+		<script type="text/javascript" src="assets/js/dev/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="assets/js/dev/scrolloverflow.min.js"></script>
+		<script type="text/javascript" src="assets/js/dev/probe-scrolloverflow.min.js"></script>
+		<script type="text/javascript" src="assets/js/dev/tweenmax.js"></script>
+		<script type="text/javascript" src="assets/js/dev/mousewheel.js"></script>
+		<script type="text/javascript" src="assets/js/dev/fullpage.js"></script>
+
 		<script type="text/javascript" src="assets/js/main-dist.js?ver=4"></script>
+		<!-- //@prepros-prepend dev/jquery-3.3.1.min.js
+//@prepros-prepend dev/scrolloverflow.min.js
+//@prepros-prepend dev/probe-scrolloverflow.min.js
+//@prepros-prepend dev/tweenmax.js
+//@prepros-prepend dev/mousewheel.js
+//@prepros-prepend dev/fullpage.js -->
 	</body>
 </html>

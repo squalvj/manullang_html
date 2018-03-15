@@ -1,16 +1,15 @@
-//@prepros-prepend dev/jquery-3.3.1.min.js
-//@prepros-prepend dev/scrolloverflow.min.js
-//@prepros-prepend dev/probe-scrolloverflow.min.js
-//@prepros-prepend dev/tweenmax.js
-//@prepros-prepend dev/mousewheel.js
-//@prepros-prepend dev/fullpage.js
+
 
 var home,init,click,util;
 
 util = {
 	checkMobile: function(){
 		var w = $(window).width();
-		return (w < 576) ? true : false;
+		return (w <= 576) ? true : false;
+	},
+	checkTab: function(){
+		var w = $(window).width();
+		return (w <= 756) ? true : false;
 	}
 }
 
@@ -65,7 +64,7 @@ click = () => {
 			});
 		},
 		openSideNavMobile: function(){
-			if (util.checkMobile()){
+			if (util.checkTab()){
 				$(".title-content").click(function(event) {
 					$(".main").addClass('open-side-nav')
 				});
@@ -79,7 +78,48 @@ click = () => {
 				$(".main").removeClass('open-side-nav')
 			});
 		},
+		openJobVacancies: function(){
+			$(".job-trigger").click(function(event) {
+				var content;
+				$(this).closest('.side-nav-overflow').children('li').children('a').removeClass('active')
+				$(this).addClass('active')
+				content = $(this).closest('.content')
+				content.find('.content-the-content').find('.contact-content').fadeOut('400', function() {
+					content.find('.content-the-content').find('.contact-job-vacancies').fadeIn(400);
+				});
+				$(".content-footer").fadeOut('400');
+			});
+		},
+		openContact: function(){
+			$(".contact-trigger").click(function(event) {
+				var content;
+				$(this).closest('.side-nav-overflow').children('li').children('a').removeClass('active')
+				$(this).addClass('active')
+				content = $(this).closest('.content')
+				content.find('.content-the-content').find('.contact-job-vacancies').fadeOut('400', function() {
+					content.find('.content-the-content').find('.contact-content').fadeIn(400);
+				});
+				$(".content-footer").fadeIn('400');
+			});
+		},
+		autoCloseSideNav: function(){
+			//when click transformer class, auto close side nav left
+			if (util.checkTab){
+				var content,text;
+				$(".transformer").click(function(event) {
+					content = $(this).closest('.content')
+					text = $(this).html();
+					if($(".main").hasClass('open-side-nav')){
+						content.find('.content-the-content').find('.title-content').html(text)
+						$(".main").removeClass('open-side-nav')
+					}
+				});
+			}
+		},
 		init: function(){
+			this.autoCloseSideNav();
+			this.openContact();
+			this.openJobVacancies();
 			this.openSideNavMobile();
 			this.closeSideNavMobile();
 			this.headerLink();
@@ -188,19 +228,21 @@ home = () => {
 		},
 		hoverNav: function(){
 			//listen hover nav
-			var activeEl,position,widthEl; 
-			activeEl = activeNav
-			position = activeEl.offset();
-			widthEl = activeEl.find('span').width();
-			$(".header-link").hover(function() {
-				var el,pos,w;
-				el = $(this);
-				pos = el.offset();
-				w = el.find('span').width();
-				TweenMax.to(marker, .75, {left: pos.left,width: w});
-			}, function() {
-				TweenMax.to(marker, .75, {left: position.left,width: widthEl,ease: Power2.easeOut});
-			});
+			if (!util.checkMobile()){
+				var activeEl,position,widthEl; 
+				activeEl = activeNav
+				position = activeEl.offset();
+				widthEl = activeEl.find('span').width();
+				$(".header-link").hover(function() {
+					var el,pos,w;
+					el = $(this);
+					pos = el.offset();
+					w = el.find('span').width();
+					TweenMax.to(marker, .75, {left: pos.left,width: w});
+				}, function() {
+					TweenMax.to(marker, .75, {left: position.left,width: widthEl,ease: Power2.easeOut});
+				});
+			}
 		},
 		mouseWheel: function(){
 			if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1){
@@ -213,9 +255,7 @@ home = () => {
 			}
 		},
 		init: function(){
-			if (!util.checkMobile()){
-				this.hoverNav();
-			}
+			this.hoverNav();
 			this.initMarker();
 			this.fullpage();
 			this.mouseWheel();
