@@ -1,5 +1,9 @@
-
-
+//@prepros-prepend dev/jquery-3.3.1.min.js
+//@prepros-prepend dev/scrolloverflow.min.js
+//@prepros-prepend dev/probe-scrolloverflow.min.js
+//@prepros-prepend dev/tweenmax.js
+//@prepros-prepend dev/mousewheel.js
+//@prepros-prepend dev/fullpage.js
 var home,init,click,util;
 
 util = {
@@ -67,15 +71,18 @@ click = () => {
 			if (util.checkTab()){
 				$(".title-content").click(function(event) {
 					$(".main").addClass('open-side-nav')
+					$.fn.fullpage.setAllowScrolling(false);
 				});
 				$(".partners-name").click(function(event) {
 					$(".main").addClass('open-side-nav')
+					$.fn.fullpage.setAllowScrolling(false);
 				});
 			}
 		},
 		closeSideNavMobile: function(){
 			$(".close-side-nav-mobile").click(function(event) {
 				$(".main").removeClass('open-side-nav')
+				$.fn.fullpage.setAllowScrolling(true);
 			});
 		},
 		openJobVacancies: function(){
@@ -86,6 +93,7 @@ click = () => {
 				content = $(this).closest('.content')
 				content.find('.content-the-content').find('.contact-content').fadeOut('400', function() {
 					content.find('.content-the-content').find('.contact-job-vacancies').fadeIn(400);
+					TweenMax.to($(".main"), .50, {backgroundColor: '#DDDDD7'});
 				});
 				$(".content-footer").fadeOut('400');
 			});
@@ -98,8 +106,10 @@ click = () => {
 				content = $(this).closest('.content')
 				content.find('.content-the-content').find('.contact-job-vacancies').fadeOut('400', function() {
 					content.find('.content-the-content').find('.contact-content').fadeIn(400);
+					$(".content-footer").fadeIn('400');
+					TweenMax.to($(".main"), .50, {backgroundColor: '#ffffff'});
 				});
-				$(".content-footer").fadeIn('400');
+				
 			});
 		},
 		autoCloseSideNav: function(){
@@ -112,6 +122,7 @@ click = () => {
 					if($(".main").hasClass('open-side-nav')){
 						content.find('.content-the-content').find('.title-content').html(text)
 						$(".main").removeClass('open-side-nav')
+						$.fn.fullpage.setAllowScrolling(true);
 					}
 				});
 			}
@@ -168,7 +179,7 @@ home = () => {
 			  		
 			  	},
 		  	 	afterRender: function () {
-		  	 		//showHideLoading();
+		  	 		console.log('load')
 				}
 			});
 		},
@@ -202,10 +213,18 @@ home = () => {
 			}
 
 			$(".fullpage-overflow").bind('scroll', function(){
-			  var top = $(this).scrollTop();
-			  var el = $(this).closest('.content-the-content').find('.content-overflow-process').find('span')
-			  var height = $(this).find("p").prop("scrollHeight") - $(this).innerHeight();
-			  update(top, height, el);
+
+				var top = $(this).scrollTop();
+				if ($(this).find('div').length){
+					var el = $(this).closest('.content-the-content').find('.content-overflow-process').find('span')
+					var height = $(this).find("div").prop("scrollHeight") - $(this).innerHeight();
+					update(top, height, el);
+				}else{
+					var el = $(this).closest('.content-the-content').find('.content-overflow-process').find('span')
+					var height = $(this).find("p").prop("scrollHeight") - $(this).innerHeight();
+					update(top, height, el);
+				}
+			  
 			});
 		},
 		moveMarker: function(){
